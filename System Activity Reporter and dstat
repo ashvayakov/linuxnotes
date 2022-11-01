@@ -1,0 +1,20 @@
+SAR
+
+View CPU Statistics
+sar -u 1 10
+
+I/O Stats
+sar -b 1 10
+
+Disk Device Status
+sar -d 1 5
+
+Context switches:
+sar -w 1 5
+
+
+DSTAT
+
+dstat --net --disk  --sys --load --proc --top-io-adv --top-cpu-adv
+
+
