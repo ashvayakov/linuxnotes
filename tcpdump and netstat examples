@@ -1,0 +1,44 @@
+TCPDUMP
+
+Just see what’s going on, by looking at all interfaces.
+tcpdump -i any
+
+Verbose output, with no resolution of hostnames or port numbers, absolute sequence numbers, and human-readable timestamps.
+tcpdump -ttttnnvvS -i vmbr0
+netstat -M
+Hex output is useful when you want to see the content of the packets in question
+tcpdump -nnvXSs 0 -c1 icmp -i vmbr0
+
+It’s quite easy to isolate traffic based on either source or destination using src and dst.
+tcpdump src 1.2.3.4
+tcpdump dst 5.6.7.8
+
+If you’re looking for packets of a particular size
+tcpdump less 24
+tcpdump greater 64
+tcpdump <= 16
+
+This will show us all traffic going to 192.168.10.20 that is not ICMP.
+tcpdump dst 192.168.10.20 and src net and not icmp
+
+NETSTAT
+Top of connects to your server
+ netstat -anp |grep 'tcp\|udp' | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -rn
+ 
+ To display the kernel interface table:
+ netstat -i
+ 
+ To display a list of masqueraded connections:
+ netstat -M
+ But you can get this:  netstat: no support for `ip_masquerade' on this system.
+
+To print SELinux context:
+netstat -Z
+
+To print routing information from the route cach:
+netstat -C 
+
+To see the summary stat for a particular port:
+netstat -st               #(For TCP)
+netstat -su               #(For UDP)
+
