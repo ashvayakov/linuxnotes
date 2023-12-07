@@ -16,5 +16,9 @@ sar -w 1 5
 DSTAT
 
 dstat --net --disk  --sys --load --proc --top-io-adv --top-cpu-adv
+dstat -tldnpms 10
 
+FATRACE report system wide file access events
 
+# fatrace -f W
+# fatrace -t -s 60 -o ~/fatrace.log
