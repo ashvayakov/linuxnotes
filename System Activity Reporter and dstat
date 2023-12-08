@@ -22,3 +22,13 @@ FATRACE report system wide file access events
 
 # fatrace -f W
 # fatrace -t -s 60 -o ~/fatrace.log
+
+
+rm /etc/ssh/ssh_host_*
+ssh-keygen -f /etc/ssh/ssh_host_rsa_key     -N '' -q -t rsa
+ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key   -N '' -q -t ecdsa
+ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -N '' -q -t ed25519
+
+ls /etc/ssh/*key* -lsh
+
+systemctl restart sshd
