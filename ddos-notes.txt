@@ -11,3 +11,5 @@ cat access.log | awk '{print $1}'| sort -nr | uniq -c | wc -l
 head access.log | grep 26/Apr/2021:1[1-2]: | awk '{print $1}'| sort -nr | uniq -c |
 
 https://habr.com/ru/companies/nixys/articles/665126/
+https://sysadmintalks.ru/ufw-http-ddos-protection/
+https://habr.com/ru/articles/347196/
