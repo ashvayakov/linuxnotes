@@ -1,1 +1,13 @@
 
+команда для парсинга логов за последние 10000 и вывод в top IP адресов, встречающихся наиболее часто:
+
+tail -10000 access.log | awk '{print $1}'| sort -nr | uniq -c | sort -nr | head
+сравнить с результатами за предыдущие сутки и узнать было ли значительное увеличение трафика:
+
+cat access.log | awk '{print $1}'| sort -nr | uniq -c | wc -l
+
+парсинг IP-адресов в момент фиксирования проблемы, а именно по дате и временному промежутку:
+
+head access.log | grep 26/Apr/2021:1[1-2]: | awk '{print $1}'| sort -nr | uniq -c |
+
+https://habr.com/ru/companies/nixys/articles/665126/
