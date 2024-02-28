@@ -1,0 +1,10 @@
+
+# Enable routing
+echo 1 > /proc/sys/net/ipv4/ip_forward
+# Enable forwarding to loopback interface
+sysctl -w net.ipv4.conf.eth0.route_localnet=1
+# Redirect outgoing traffic to proxy
+iptables -t nat -A OUTPUT -p tcp ! --dport 8888 -j DNAT --to-destination 192.168.4.240:8888
+iptables -t nat -A POSTROUTING -j MASQUERADE
+
+######################
